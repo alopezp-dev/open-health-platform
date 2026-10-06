@@ -1,4 +1,4 @@
-package com.alopezp.openhealth;
+package com.alopezp.openhealth.patient.domain;
 
 public enum BirthDatePrecision {
     YEAR,
