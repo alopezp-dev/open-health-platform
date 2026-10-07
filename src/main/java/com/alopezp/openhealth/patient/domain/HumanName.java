@@ -2,43 +2,31 @@ package com.alopezp.openhealth.patient.domain;
 
 import java.util.List;
 
-public class HumanName {
+public record HumanName(
+        String text,
+        String family,
+        List<String> given
+) {
 
-    private final String text;
-    private final String family;
-    private final List<String> given;
-
-    public HumanName(
-            String text,
-            String family,
-            List<String> given
-    ) {
+    public HumanName {
         if (text == null || text.isBlank()) {
-            throw new IllegalArgumentException(
-                    "Human name text cannot be empty"
-            );
+            throw new IllegalArgumentException("Human name text cannot be empty");
+        }
+
+        if (family != null && family.isBlank()) {
+            throw new IllegalArgumentException("Family name cannot be blank");
         }
 
         if (given == null) {
-            throw new IllegalArgumentException(
-                    "Given names cannot be null"
-            );
+            throw new IllegalArgumentException("Given names cannot be null");
         }
 
-        this.text = text;
-        this.family = family;
-        this.given = List.copyOf(given);
-    }
+        for (String givenName : given) {
+            if (givenName == null || givenName.isBlank()) {
+                throw new IllegalArgumentException("Given names cannot contain null or blank values");
+            }
+        }
 
-    public String getText() {
-        return text;
-    }
-
-    public String getFamily() {
-        return family;
-    }
-
-    public List<String> getGiven() {
-        return given;
+        given = List.copyOf(given);
     }
 }

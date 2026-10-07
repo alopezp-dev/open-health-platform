@@ -2,23 +2,13 @@ package com.alopezp.openhealth.patient.domain;
 
 import java.util.UUID;
 
-public class PatientId {
+public record PatientId(UUID value) {
 
-    private final UUID value;
-
-    public PatientId(UUID value) {
-        if (value == null) {
-            throw new IllegalArgumentException("Patient ID cannot be null");
-        }
-
-        this.value = value;
+    public PatientId {
+        if(value == null) throw new IllegalArgumentException("PatientId can not be null");
     }
 
     public static PatientId generate() {
         return new PatientId(UUID.randomUUID());
-    }
-
-    public UUID getValue() {
-        return value;
     }
 }
