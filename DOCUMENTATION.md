@@ -307,9 +307,9 @@ En futuras iteraciones el concepto podrá incorporar información adicional como
 
 ---
 
-### `HumanName`
+### `HumanNameTest`
 
-`HumanName` representa un nombre asociado al paciente de una forma compatible con diferentes estructuras culturales.
+`HumanNameTest` representa un nombre asociado al paciente de una forma compatible con diferentes estructuras culturales.
 
 No se utiliza un modelo rígido como:
 
